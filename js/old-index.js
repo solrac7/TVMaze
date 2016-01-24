@@ -13,10 +13,10 @@ $(function(){
 			</div>
 		</article>`;
 
-	let render = shows => {
+	var function render (shows){
 		var showsList = $(".showsList");
 		showsList.find(".loader").remove();
-		shows.forEach( show => { 
+		shows.forEach( function(show) { 
 				var article = template
 					.replace(':image:', show.image.medium)
 					.replace(':alt:', show.name)
@@ -27,7 +27,7 @@ $(function(){
 	}
 	if(!localStorage.movies){
 		$.ajax("http://api.tvmaze.com/shows")
-			.then( shows => {
+			.then( function(shows) {
 				localStorage.movies = JSON.stringify(shows);
 				render(shows);	
 			})
@@ -35,7 +35,7 @@ $(function(){
 		render(JSON.parse(localStorage.movies));
 	}
 
-	$(".header").find(".search").on("submit", ev => {
+	$(".header").find(".search").on("submit", function(ev) {
 		ev.preventDefault();
 		let texto = $(this).find(".search__input").val();
 
@@ -45,8 +45,8 @@ $(function(){
 		}else{
 			$(".show").remove();
 			$.ajax(`http://api.tvmaze.com/search/shows?q=${texto}`)
-			.then( resp => {
-				var show = resp.map( el => {
+			.then( function(resp) {
+				var show = resp.map(function(el) {
 					return el.show;
 				})
 				render(show);	
