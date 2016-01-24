@@ -5,7 +5,7 @@
 import $ from 'jquery'
 import template from 'src/template'
 
-export function render(shows){
+export default function render(shows){
 	$(".showsList").find(".loader").remove();
 	var showsList = $(".showsList");
 		shows.forEach( show => { 
