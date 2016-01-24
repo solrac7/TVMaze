@@ -13,7 +13,7 @@ $(function(){
 			</div>
 		</article>`;
 
-	var function render (shows){
+	function render(shows){
 		var showsList = $(".showsList");
 		showsList.find(".loader").remove();
 		shows.forEach( function(show) { 
